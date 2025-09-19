@@ -1,7 +1,7 @@
-use std::{path::PathBuf, sync::Arc};
-use actix_web::web;
-use tokio::sync::RwLock;
 use crate::config::Config;
+use actix_web::web;
+use std::{path::PathBuf, sync::Arc};
+use tokio::sync::RwLock;
 
 #[derive(Clone)]
 pub struct AppState {

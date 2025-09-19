@@ -1,7 +1,7 @@
 mod config;
-mod telemetry;
-mod state;
 mod errors;
+mod state;
+mod telemetry;
 
 // declare these so submodules compile
 mod http;
@@ -9,7 +9,7 @@ mod models;
 mod services;
 
 use actix_cors::Cors;
-use actix_web::{App, HttpServer, middleware::Logger};
+use actix_web::{middleware::Logger, App, HttpServer};
 use config::Config;
 use state::AppState;
 

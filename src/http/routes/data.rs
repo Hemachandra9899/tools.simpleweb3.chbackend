@@ -1,6 +1,9 @@
-use actix_web::{get, post, web, HttpResponse, Responder};
-use crate::{models::item::{DataFile, Item, NewItem}, services::fs_store};
 use crate::state::AppState;
+use crate::{
+    models::item::{DataFile, Item, NewItem},
+    services::fs_store,
+};
+use actix_web::{get, post, web, HttpResponse, Responder};
 
 #[get("/data")]
 pub async fn get_data(state: web::Data<AppState>) -> impl Responder {
@@ -31,7 +34,10 @@ pub async fn add_item(state: web::Data<AppState>, payload: web::Json<NewItem>) -
     if let Some(existing) = data.items.iter_mut().find(|it| it.id == payload.id) {
         existing.name = payload.name.clone();
     } else {
-        data.items.push(Item { id: payload.id.clone(), name: payload.name.clone() });
+        data.items.push(Item {
+            id: payload.id.clone(),
+            name: payload.name.clone(),
+        });
     }
 
     if let Err(e) = fs_store::write_data(&state.data_path, &data).await {

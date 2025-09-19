@@ -12,7 +12,9 @@ pub struct DataFile {
 }
 
 impl DataFile {
-    pub fn empty() -> Self { Self { items: Vec::new() } }
+    pub fn empty() -> Self {
+        Self { items: Vec::new() }
+    }
 }
 
 #[derive(Debug, Deserialize)]
